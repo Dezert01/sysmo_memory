@@ -23,3 +23,16 @@ body {
   align-items: center;
   justify-content: center;
 }
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.wrapper {
+  @apply bg-dark flex h-full w-full items-center justify-center;
+}
+.container {
+  @apply h-full max-h-full items-center border border-[#ffffff] px-11 py-9 sm:h-[64rem];
+}
+.socials-btn {
+  @apply from-primary to-secondary flex h-[3.125rem] w-[3.125rem] items-center justify-center rounded-full bg-[#ffffff] bg-gradient-to-br;
+}

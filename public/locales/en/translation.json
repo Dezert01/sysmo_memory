@@ -1,0 +1,21 @@
+{
+  "Btns": {
+    "Start": "Start",
+    "Settings": "Settings",
+    "Support": "Support",
+    "Quit": "Quit"
+  },
+  "Settings": {
+    "Settings": "Settings",
+    "Language": "Language",
+    "Music": "Music",
+    "Sfx": "Sfx"
+  },
+  "Support": {
+    "Support": "Support",
+    "EnterEmail": "Please enter your e-mail",
+    "Message": "Message",
+    "Send": "Send",
+    "TryAgain": "Try again"
+  }
+}

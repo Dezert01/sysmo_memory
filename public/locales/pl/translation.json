@@ -1,0 +1,21 @@
+{
+  "Btns": {
+    "Start": "Start",
+    "Settings": "Ustawienia",
+    "Support": "Support",
+    "Quit": "Wyjdź"
+  },
+  "Settings": {
+    "Settings": "Ustawienia",
+    "Language": "Język",
+    "Music": "Muzyka",
+    "Sfx": "Sfx"
+  },
+  "Support": {
+    "Support": "Support",
+    "EnterEmail": "Wprowadź swój adres e-mail",
+    "Message": "Wiadomość",
+    "Send": "Wyślij",
+    "TryAgain": "Spróbuj ponownie"
+  }
+}
