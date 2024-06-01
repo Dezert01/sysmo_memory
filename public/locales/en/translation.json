@@ -17,5 +17,27 @@
     "Message": "Message",
     "Send": "Send",
     "TryAgain": "Try again"
+  },
+  "Cards": {
+    "Mouse": {
+      "Label": "Mouse",
+      "Description": "A device used to interact with a computer"
+    }
+  },
+  "Tutorial": {
+    "StepOne": {
+      "Label": "Level Easy",
+      "Description": "The player must match pairs of appropriate pictures"
+    },
+    "StepTwo": {
+      "Label": "Level Medium",
+      "Description": "It's about connecting a picture with a word that matches it"
+    },
+    "StepThree": {
+      "Label": "Level Hard",
+      "Description": "The player must match key words with an adequate definition"
+    },
+    "Skip": "Skip",
+    "Back": "Go Back"
   }
 }

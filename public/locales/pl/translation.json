@@ -17,5 +17,27 @@
     "Message": "Wiadomość",
     "Send": "Wyślij",
     "TryAgain": "Spróbuj ponownie"
+  },
+  "Cards": {
+    "Mouse": {
+      "Label": "Myszka",
+      "Description": "Urządzenie służące do interakcji z komputerem"
+    }
+  },
+  "Tutorial": {
+    "StepOne": {
+      "Label": "Poziom ŁATWY",
+      "Description": "Gracz musi dopasować pary odpowiednich obrazków"
+    },
+    "StepTwo": {
+      "Label": "Poziom ŚREDNI",
+      "Description": "Gracz musi dopasować obrazek z odpowiednią nazwą"
+    },
+    "StepThree": {
+      "Label": "Poziom TRUDNY",
+      "Description": "Gracz musi dopasować nazwę z odpowiednią definicją"
+    },
+    "Skip": "Dalej",
+    "Back": "Cofnij"
   }
 }

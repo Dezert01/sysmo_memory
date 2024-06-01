@@ -11,11 +11,18 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as TutorialImport } from './routes/tutorial'
 import { Route as SupportImport } from './routes/support'
 import { Route as SettingsImport } from './routes/settings'
+import { Route as SelectLevelImport } from './routes/selectLevel'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const TutorialRoute = TutorialImport.update({
+  path: '/tutorial',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const SupportRoute = SupportImport.update({
   path: '/support',
@@ -24,6 +31,11 @@ const SupportRoute = SupportImport.update({
 
 const SettingsRoute = SettingsImport.update({
   path: '/settings',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const SelectLevelRoute = SelectLevelImport.update({
+  path: '/selectLevel',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -43,6 +55,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
+    '/selectLevel': {
+      id: '/selectLevel'
+      path: '/selectLevel'
+      fullPath: '/selectLevel'
+      preLoaderRoute: typeof SelectLevelImport
+      parentRoute: typeof rootRoute
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -57,6 +76,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SupportImport
       parentRoute: typeof rootRoute
     }
+    '/tutorial': {
+      id: '/tutorial'
+      path: '/tutorial'
+      fullPath: '/tutorial'
+      preLoaderRoute: typeof TutorialImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -64,8 +90,10 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
+  SelectLevelRoute,
   SettingsRoute,
   SupportRoute,
+  TutorialRoute,
 })
 
 /* prettier-ignore-end */
@@ -77,18 +105,26 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/selectLevel",
         "/settings",
-        "/support"
+        "/support",
+        "/tutorial"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/selectLevel": {
+      "filePath": "selectLevel.tsx"
     },
     "/settings": {
       "filePath": "settings.tsx"
     },
     "/support": {
       "filePath": "support.tsx"
+    },
+    "/tutorial": {
+      "filePath": "tutorial.tsx"
     }
   }
 }
