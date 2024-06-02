@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
 
 export const Route = createFileRoute("/loseGame")({
@@ -15,12 +15,16 @@ function LoseGame() {
           {t("LoseGame.GameOver")}
         </p>
         <div className="flex flex-col gap-6">
-          <Button variant="gray" className="text-[1rem]">
-            {t("LoseGame.TryAgain")}
-          </Button>
-          <Button variant="gray" className="text-[1rem]">
-            {t("LoseGame.Home")}
-          </Button>
+          <Link to="/selectLevel">
+            <Button variant="gray" className="w-full text-[1rem]">
+              {t("LoseGame.TryAgain")}
+            </Button>
+          </Link>
+          <Link to="/">
+            <Button variant="gray" className="w-full text-[1rem]">
+              {t("LoseGame.Home")}
+            </Button>
+          </Link>
           <Button variant="gray" className="text-[1rem]">
             {t("LoseGame.Quit")}
           </Button>

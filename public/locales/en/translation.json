@@ -45,7 +45,10 @@
     "Easy": "Easy",
     "Medium": "Medium",
     "Hard": "Hard",
-    "Play": "Play"
+    "Play": "Play",
+    "PlayNew": "Play new game",
+    "Resume": "Resume",
+    "GameRunning": "Game is running. Do you want to start a new game?"
   },
   "WinGame": {
     "LevelComplete": "Level complete!",
@@ -60,5 +63,9 @@
     "TryAgain": "Try again",
     "Home": "Home",
     "Quit": "Quit"
+  },
+  "Menu": {
+    "Menu": "Menu",
+    "Resume": "Resume"
   }
 }

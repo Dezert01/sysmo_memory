@@ -12,7 +12,15 @@ export const Route = createFileRoute("/game")({
 });
 
 function Game() {
-  const { level, isGameRunning } = useGameStore();
+  const {
+    level,
+    isGameRunning,
+    tempTimestamp,
+    matchedTiles,
+    board,
+    timeleftStore,
+    setTimeleftStore,
+  } = useGameStore();
 
   const [timeleft, setTimeleft] = useState<number>(0);
 
@@ -20,14 +28,12 @@ function Game() {
   const timeleftRef = useRef<number>(0);
 
   const {
-    board,
-    setBoard,
-    generateBoard,
     firstToMatch,
     secondToMatch,
-    matchedTiles,
     pressCard,
     loseGame,
+    startGame,
+    updateTimestamp,
   } = useGame();
 
   const calculateTimeLeft = (time: number) => {
@@ -38,11 +44,18 @@ function Game() {
     const formattedSeconds = seconds < 10 ? `0${seconds}` : seconds;
     return `${formattedMinutes}:${formattedSeconds}`;
   };
-
   useEffect(() => {
-    setBoard(generateBoard(level));
-    setTimeleft(GameConfig.levels[level].time);
-    timeleftRef.current = GameConfig.levels[level].time;
+    if (!isGameRunning) return;
+    startGame(level);
+    const _timeleft =
+      tempTimestamp == 0
+        ? GameConfig.levels[level].time
+        : timeleftStore - Math.floor((Date.now() - tempTimestamp) / 1000);
+    if (_timeleft <= 0) {
+      loseGame();
+    }
+    setTimeleft(_timeleft);
+    timeleftRef.current = _timeleft;
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
     }
@@ -59,14 +72,22 @@ function Game() {
         loseGame();
       }
     }, 1000);
-  }, [level]);
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+      updateTimestamp(timeleftRef.current);
+      console.log("unmount");
+    };
+  }, []);
 
   if (!isGameRunning) {
     return null;
   }
   return (
     <div className="container flex flex-col bg-primary">
-      <div className="flex w-full flex-col-reverse items-center justify-between gap-12 sm:flex-row sm:items-start sm:gap-0">
+      <div className="mb-12 flex w-full flex-col-reverse items-center justify-between gap-12 sm:flex-row sm:items-start sm:gap-0">
         <div className="flex h-[7.5rem] w-[7.5rem] items-center justify-center rounded-full bg-dark text-[2.5rem] text-white sm:h-[12.5rem] sm:w-[12.5rem] sm:text-[4rem]">
           {calculateTimeLeft(timeleft)}
         </div>
@@ -78,10 +99,10 @@ function Game() {
       </div>
       <div
         className={cn(
-          "grid w-full gap-[1.25rem]",
+          "grid gap-[1.25rem]",
           level === "easy"
-            ? "grid-cols-3 grid-rows-3"
-            : "grid-cols-4 grid-rows-4",
+            ? "w-full grid-cols-3 grid-rows-3 sm:w-[30rem]"
+            : "w-full grid-cols-4 grid-rows-4 sm:w-[30rem]",
         )}
       >
         {board.map((card, index) => (

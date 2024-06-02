@@ -45,7 +45,10 @@
     "Easy": "Łatwy",
     "Medium": "Średni",
     "Hard": "Trudny",
-    "Play": "Graj"
+    "Play": "Graj",
+    "PlayNew": "Zagraj w nową grę",
+    "Resume": "Wznów",
+    "GameRunning": "Gra w trakcie. Chcesz zagrać nową grę?"
   },
   "WinGame": {
     "LevelComplete": "Poziom ukończony!",
@@ -60,5 +63,9 @@
     "TryAgain": "Spróbuj ponownie",
     "Home": "Strona główna",
     "Quit": "Wyjdź"
+  },
+  "Menu": {
+    "Menu": "Menu",
+    "Resume": "Wznów"
   }
 }

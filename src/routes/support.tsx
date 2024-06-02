@@ -14,7 +14,7 @@ function Support() {
   const { t } = useTranslation();
   return (
     <div className="container flex flex-col items-center justify-center">
-      <p className="font-white text-[2.25rem] font-semibold text-white">
+      <p className="font-white mt-12 text-[2.25rem] font-semibold text-white">
         {t("Support.Support")}
       </p>
       <div className="my-[2.375rem] flex w-full flex-col rounded-[1.25rem] border-[3px] border-lightGray bg-primary px-6 py-14 sm:w-[30rem]">

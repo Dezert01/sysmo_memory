@@ -1,29 +1,45 @@
 import { GameConfig } from "@/config/game.config";
 import useGameStore from "@/store/gameStore";
 import { useNavigate } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function useGame() {
-  const { level, isGameRunning, setIsGameRunning } = useGameStore();
+  const {
+    level,
+    isGameRunning,
+    setIsGameRunning,
+    matchedTiles,
+    setMatchedTiles,
+    board,
+    setBoard,
+    setTempTimestamp,
+    setTimeleftStore,
+  } = useGameStore();
   const navigate = useNavigate();
   const boardSize = GameConfig.levels[level].pairs * 2;
-  const [board, setBoard] = useState<
-    { card: string; isImage: boolean; content: string }[]
-  >([]);
   const [firstToMatch, setFirstToMatch] = useState<number | undefined>(
     undefined,
   );
   const [secondToMatch, setSecondToMatch] = useState<number | undefined>(
     undefined,
   );
-  const [matchedTiles, setMatchedTiles] = useState<number[]>([]);
+  const isGameRunningRef = useRef<boolean>(isGameRunning);
+
+  const startGame = (level: "easy" | "medium" | "hard") => {
+    if (board.length !== 0) return;
+    const newBoard = generateBoard(level);
+    setBoard(newBoard);
+  };
 
   const stopGame = () => {
+    setIsGameRunning(false);
+    isGameRunningRef.current = false;
+    console.log("stopGame");
+    setTempTimestamp(0);
     setFirstToMatch(undefined);
     setSecondToMatch(undefined);
     setMatchedTiles([]);
     setBoard([]);
-    setIsGameRunning(false);
   };
   const winGame = () => {
     navigate({ to: "/winGame" });
@@ -32,6 +48,17 @@ export default function useGame() {
   const loseGame = () => {
     navigate({ to: "/loseGame" });
     stopGame();
+  };
+
+  const updateTimestamp = (timeleft: number) => {
+    if (isGameRunningRef.current) {
+      setTempTimestamp(Date.now());
+      setTimeleftStore(timeleft);
+    } else {
+      setTempTimestamp(0);
+      setTimeleftStore(0);
+    }
+    console.log(isGameRunning);
   };
 
   const generateBoard = (level: "easy" | "medium" | "hard") => {
@@ -59,7 +86,7 @@ export default function useGame() {
       });
       availableCards.splice(index, 1);
     }
-    return cards;
+    return cards.sort((a, b) => 0.5 - Math.random());
   };
 
   const pressCard = async (index: number) => {
@@ -105,14 +132,14 @@ export default function useGame() {
   }, [matchedTiles]);
 
   return {
-    board,
-    setBoard,
     generateBoard,
     firstToMatch,
     secondToMatch,
-    matchedTiles,
     pressCard,
     winGame,
     loseGame,
+    startGame,
+    stopGame,
+    updateTimestamp,
   };
 }

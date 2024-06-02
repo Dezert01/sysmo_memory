@@ -18,7 +18,7 @@ const Card: React.FC<Props> = ({ isImage, content, show, index, onClick }) => {
   }, []);
 
   return (
-    <div className="aspect-[5/8] w-[8em]">
+    <div className="aspect-[5/8] w-full">
       <AnimatePresence mode="wait">
         {!show && (
           <m.div
@@ -46,7 +46,9 @@ const Card: React.FC<Props> = ({ isImage, content, show, index, onClick }) => {
             {isImage ? (
               <img className="h-1/3" src={`images/cards/${content}.png`} />
             ) : (
-              <p className="text-center text-[1rem] font-bold">{t(content)}</p>
+              <p className="text-center text-[0.6rem] font-bold sm:text-[1rem]">
+                {t(content)}
+              </p>
             )}
           </m.div>
         )}

@@ -27,7 +27,7 @@ function Tutorial() {
                 src={`images/cards/${currentStep.cardOne.content}.png`}
               />
             ) : (
-              <p className="text-center text-[1rem] font-bold">
+              <p className="text-center text-[0.6rem] font-bold sm:text-[1rem]">
                 {t(currentStep.cardOne.content)}
               </p>
             )}
@@ -39,7 +39,7 @@ function Tutorial() {
                 src={`images/cards/${currentStep.cardTwo.content}.png`}
               />
             ) : (
-              <p className="text-center text-[1rem] font-bold">
+              <p className="text-center text-[0.6rem] font-bold sm:text-[1rem]">
                 {t(currentStep.cardTwo.content)}
               </p>
             )}
