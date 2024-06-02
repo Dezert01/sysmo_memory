@@ -11,13 +11,21 @@
 // Import Routes
 
 import { Route as rootRoute } from './routes/__root'
+import { Route as WinGameImport } from './routes/winGame'
 import { Route as TutorialImport } from './routes/tutorial'
 import { Route as SupportImport } from './routes/support'
 import { Route as SettingsImport } from './routes/settings'
 import { Route as SelectLevelImport } from './routes/selectLevel'
+import { Route as LoseGameImport } from './routes/loseGame'
+import { Route as GameImport } from './routes/game'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
+
+const WinGameRoute = WinGameImport.update({
+  path: '/winGame',
+  getParentRoute: () => rootRoute,
+} as any)
 
 const TutorialRoute = TutorialImport.update({
   path: '/tutorial',
@@ -39,6 +47,16 @@ const SelectLevelRoute = SelectLevelImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const LoseGameRoute = LoseGameImport.update({
+  path: '/loseGame',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const GameRoute = GameImport.update({
+  path: '/game',
+  getParentRoute: () => rootRoute,
+} as any)
+
 const IndexRoute = IndexImport.update({
   path: '/',
   getParentRoute: () => rootRoute,
@@ -53,6 +71,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/game': {
+      id: '/game'
+      path: '/game'
+      fullPath: '/game'
+      preLoaderRoute: typeof GameImport
+      parentRoute: typeof rootRoute
+    }
+    '/loseGame': {
+      id: '/loseGame'
+      path: '/loseGame'
+      fullPath: '/loseGame'
+      preLoaderRoute: typeof LoseGameImport
       parentRoute: typeof rootRoute
     }
     '/selectLevel': {
@@ -83,6 +115,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TutorialImport
       parentRoute: typeof rootRoute
     }
+    '/winGame': {
+      id: '/winGame'
+      path: '/winGame'
+      fullPath: '/winGame'
+      preLoaderRoute: typeof WinGameImport
+      parentRoute: typeof rootRoute
+    }
   }
 }
 
@@ -90,10 +129,13 @@ declare module '@tanstack/react-router' {
 
 export const routeTree = rootRoute.addChildren({
   IndexRoute,
+  GameRoute,
+  LoseGameRoute,
   SelectLevelRoute,
   SettingsRoute,
   SupportRoute,
   TutorialRoute,
+  WinGameRoute,
 })
 
 /* prettier-ignore-end */
@@ -105,14 +147,23 @@ export const routeTree = rootRoute.addChildren({
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/game",
+        "/loseGame",
         "/selectLevel",
         "/settings",
         "/support",
-        "/tutorial"
+        "/tutorial",
+        "/winGame"
       ]
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/game": {
+      "filePath": "game.tsx"
+    },
+    "/loseGame": {
+      "filePath": "loseGame.tsx"
     },
     "/selectLevel": {
       "filePath": "selectLevel.tsx"
@@ -125,6 +176,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/tutorial": {
       "filePath": "tutorial.tsx"
+    },
+    "/winGame": {
+      "filePath": "winGame.tsx"
     }
   }
 }

@@ -22,7 +22,7 @@ export const TutorialConfig: TTutorial[] = [
     },
     cardTwo: {
       isImage: false,
-      content: "Cards.Mouse.Label",
+      content: "Cards.mouse.Label",
     },
   },
   {
@@ -30,11 +30,11 @@ export const TutorialConfig: TTutorial[] = [
     description: "Tutorial.StepThree.Description",
     cardOne: {
       isImage: false,
-      content: "Cards.Mouse.Label",
+      content: "Cards.mouse.Label",
     },
     cardTwo: {
       isImage: false,
-      content: "Cards.Mouse.Description",
+      content: "Cards.mouse.Description",
     },
   },
 ];

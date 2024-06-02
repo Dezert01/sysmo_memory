@@ -14,11 +14,12 @@ const buttonVariants = cva(
         outline:
           "font-bold border-[3px] rounded-full text-dark bg-lightGray border-primary hover:bg-lightGrayHover",
         gray: "rounded-full bg-lightGray hover:bg-lightGrayHover text-dark",
+        dark: "rounded-full bg-dark hover:bg-darkHover text-white",
       },
       size: {
         default: "h-16 text-[1.875rem]",
         lg: "h-20 text-[1.875rem]",
-        sm: "h-[1.875rem] text-[0.9375]",
+        sm: "h-[1.875rem] text-[0.9375rem]",
       },
     },
     defaultVariants: {

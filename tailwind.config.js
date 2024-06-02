@@ -23,6 +23,7 @@ module.exports = {
       black: "#000000",
       white: "#FFFFFF",
       dark: "#1C1C1C",
+      darkHover: "#0A0A0A",
       primary: "#EC7302",
       primaryHover: "#F35701",
       secondary: "#F03802",

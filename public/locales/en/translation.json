@@ -19,7 +19,7 @@
     "TryAgain": "Try again"
   },
   "Cards": {
-    "Mouse": {
+    "mouse": {
       "Label": "Mouse",
       "Description": "A device used to interact with a computer"
     }
@@ -39,5 +39,26 @@
     },
     "Skip": "Skip",
     "Back": "Go Back"
+  },
+  "SelectLevel": {
+    "SelectLevel": "Select difficulty level",
+    "Easy": "Easy",
+    "Medium": "Medium",
+    "Hard": "Hard",
+    "Play": "Play"
+  },
+  "WinGame": {
+    "LevelComplete": "Level complete!",
+    "Won": "You won",
+    "Copy": "Copy",
+    "EmailQuestion": "Do you want to receive the code by email?",
+    "No": "No",
+    "Yes": "Yes"
+  },
+  "LoseGame": {
+    "GameOver": "Game Over",
+    "TryAgain": "Try again",
+    "Home": "Home",
+    "Quit": "Quit"
   }
 }

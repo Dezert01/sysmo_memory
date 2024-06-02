@@ -1,4 +1,3 @@
-import Card from "@/components/card";
 import { Button } from "@/components/ui/button";
 import { TutorialConfig } from "@/config/tutorial.config";
 import useTutorial from "@/hooks/useTutorial";
@@ -10,8 +9,7 @@ export const Route = createFileRoute("/tutorial")({
 });
 
 function Tutorial() {
-  const { currentStep, currentStepIndex, next, prev, isFirst } =
-    useTutorial(TutorialConfig);
+  const { currentStep, next, prev, isFirst } = useTutorial(TutorialConfig);
 
   const { t } = useTranslation();
 
@@ -22,14 +20,30 @@ function Tutorial() {
           {t(currentStep.label)}
         </p>
         <div className="flex justify-center gap-8">
-          <Card
-            isImage={currentStep.cardOne.isImage}
-            content={currentStep.cardOne.content}
-          />
-          <Card
-            isImage={currentStep.cardTwo.isImage}
-            content={currentStep.cardTwo.content}
-          />
+          <div className="flex aspect-[5/8] w-[8em] items-center justify-center rounded-[1rem] border-[3px] border-black bg-white">
+            {currentStep.cardOne.isImage ? (
+              <img
+                className="h-1/3"
+                src={`images/cards/${currentStep.cardOne.content}.png`}
+              />
+            ) : (
+              <p className="text-center text-[1rem] font-bold">
+                {t(currentStep.cardOne.content)}
+              </p>
+            )}
+          </div>
+          <div className="flex aspect-[5/8] w-[8em] items-center justify-center rounded-[1rem] border-[3px] border-black bg-white">
+            {currentStep.cardTwo.isImage ? (
+              <img
+                className="h-1/3"
+                src={`images/cards/${currentStep.cardTwo.content}.png`}
+              />
+            ) : (
+              <p className="text-center text-[1rem] font-bold">
+                {t(currentStep.cardTwo.content)}
+              </p>
+            )}
+          </div>
         </div>
         <p className="my-4 text-[1.25rem] text-white">
           {t(currentStep.description)}
