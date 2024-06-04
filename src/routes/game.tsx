@@ -1,7 +1,7 @@
 import Card from "@/components/card";
 import { Button } from "@/components/ui/button";
 import useGameStore from "@/store/gameStore";
-import { createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute } from "@tanstack/react-router";
 import { cn } from "@/lib/utils";
 import { GameConfig } from "@/config/game.config";
 import { useEffect, useRef, useState } from "react";
@@ -19,7 +19,6 @@ function Game() {
     matchedTiles,
     board,
     timeleftStore,
-    setTimeleftStore,
   } = useGameStore();
 
   const [timeleft, setTimeleft] = useState<number>(0);
@@ -92,9 +91,11 @@ function Game() {
           {calculateTimeLeft(timeleft)}
         </div>
         <div className="flex w-full justify-end sm:w-fit">
-          <Button variant="dark" size="sm" className="h-12 px-[1rem]">
-            menu
-          </Button>
+          <Link to="/menu">
+            <Button variant="dark" size="sm" className="h-12 px-[1rem]">
+              menu
+            </Button>
+          </Link>
         </div>
       </div>
       <div

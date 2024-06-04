@@ -16,6 +16,7 @@ import { Route as TutorialImport } from './routes/tutorial'
 import { Route as SupportImport } from './routes/support'
 import { Route as SettingsImport } from './routes/settings'
 import { Route as SelectLevelImport } from './routes/selectLevel'
+import { Route as MenuImport } from './routes/menu'
 import { Route as LoseGameImport } from './routes/loseGame'
 import { Route as GameImport } from './routes/game'
 import { Route as IndexImport } from './routes/index'
@@ -44,6 +45,11 @@ const SettingsRoute = SettingsImport.update({
 
 const SelectLevelRoute = SelectLevelImport.update({
   path: '/selectLevel',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const MenuRoute = MenuImport.update({
+  path: '/menu',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -85,6 +91,13 @@ declare module '@tanstack/react-router' {
       path: '/loseGame'
       fullPath: '/loseGame'
       preLoaderRoute: typeof LoseGameImport
+      parentRoute: typeof rootRoute
+    }
+    '/menu': {
+      id: '/menu'
+      path: '/menu'
+      fullPath: '/menu'
+      preLoaderRoute: typeof MenuImport
       parentRoute: typeof rootRoute
     }
     '/selectLevel': {
@@ -131,6 +144,7 @@ export const routeTree = rootRoute.addChildren({
   IndexRoute,
   GameRoute,
   LoseGameRoute,
+  MenuRoute,
   SelectLevelRoute,
   SettingsRoute,
   SupportRoute,
@@ -149,6 +163,7 @@ export const routeTree = rootRoute.addChildren({
         "/",
         "/game",
         "/loseGame",
+        "/menu",
         "/selectLevel",
         "/settings",
         "/support",
@@ -164,6 +179,9 @@ export const routeTree = rootRoute.addChildren({
     },
     "/loseGame": {
       "filePath": "loseGame.tsx"
+    },
+    "/menu": {
+      "filePath": "menu.tsx"
     },
     "/selectLevel": {
       "filePath": "selectLevel.tsx"

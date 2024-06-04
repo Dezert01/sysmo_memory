@@ -3,7 +3,8 @@
     "Start": "Start",
     "Settings": "Ustawienia",
     "Support": "Support",
-    "Quit": "Wyjdź"
+    "Quit": "Wyjdź",
+    "Home": "Strona główna"
   },
   "Settings": {
     "Settings": "Ustawienia",
@@ -56,13 +57,16 @@
     "Copy": "Kopiuj",
     "EmailQuestion": "Czy chciałbyś otrzymać kod na e-mail?",
     "No": "Nie",
-    "Yes": "Tak"
+    "Yes": "Tak",
+    "GameRunning": "Gra w trakcie.",
+    "GoBackToGame": "Wróć do gry"
   },
   "LoseGame": {
     "GameOver": "Game Over",
     "TryAgain": "Spróbuj ponownie",
-    "Home": "Strona główna",
-    "Quit": "Wyjdź"
+    "Quit": "Wyjdź",
+    "GameRunning": "Gra w trakcie.",
+    "GoBackToGame": "Wróć do gry"
   },
   "Menu": {
     "Menu": "Menu",

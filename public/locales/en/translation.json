@@ -3,7 +3,8 @@
     "Start": "Start",
     "Settings": "Settings",
     "Support": "Support",
-    "Quit": "Quit"
+    "Quit": "Quit",
+    "Home": "Home"
   },
   "Settings": {
     "Settings": "Settings",
@@ -56,13 +57,16 @@
     "Copy": "Copy",
     "EmailQuestion": "Do you want to receive the code by email?",
     "No": "No",
-    "Yes": "Yes"
+    "Yes": "Yes",
+    "GameRunning": "Game is still running.",
+    "GoBackToGame": "Go back to game"
   },
   "LoseGame": {
     "GameOver": "Game Over",
     "TryAgain": "Try again",
-    "Home": "Home",
-    "Quit": "Quit"
+    "Quit": "Quit",
+    "GameRunning": "Game is still running.",
+    "GoBackToGame": "Go back to game"
   },
   "Menu": {
     "Menu": "Menu",
