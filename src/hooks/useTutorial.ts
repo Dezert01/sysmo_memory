@@ -1,6 +1,7 @@
 import TTutorial from "@/model/tutorial";
 import { useNavigate } from "@tanstack/react-router";
 import { useState } from "react";
+import Cookies from "universal-cookie";
 
 export default function useTutorial(steps: TTutorial[]) {
   const [currentStepIndex, setCurrentStepIndex] = useState<number>(0);
@@ -10,6 +11,8 @@ export default function useTutorial(steps: TTutorial[]) {
   const next = () => {
     setCurrentStepIndex((prev) => {
       if (prev === steps.length - 1) {
+        const cookies = new Cookies(null, { path: "/" });
+        cookies.set("sysmo-memory-tutorial", 1, { path: "/" });
         navigate({ to: "/selectLevel" });
         return prev;
       }
