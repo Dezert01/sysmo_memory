@@ -4,7 +4,9 @@
     "Settings": "Ustawienia",
     "Support": "Support",
     "Quit": "Wyjdź",
-    "Home": "Strona główna"
+    "Home": "Strona główna",
+    "Accept": "Akceptuj",
+    "Here": "Tutaj"
   },
   "Settings": {
     "Settings": "Ustawienia",
@@ -71,5 +73,16 @@
   "Menu": {
     "Menu": "Menu",
     "Resume": "Wznów"
+  },
+  "Rules": {
+    "Title": "Zasady",
+    "Description": "Wygraj darmowe godziny programistyczne (kod)",
+    "Rules": [
+      "Nagroda obowiązuję tylko w software house Sysmo.pl",
+      "Ilość godzin uzależniona jest od ukończonego poziomu trudności",
+      "Kod ma ważność 3 miesięcy od otrzymania",
+      "Aby skorzystać z kodu, skontaktuj się z nami :)"
+    ],
+    "FullRules": "Pełny regulamin znajdziesz"
   }
 }

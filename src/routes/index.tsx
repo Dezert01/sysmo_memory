@@ -7,6 +7,16 @@ import WebIcon from "@/components/images/socials/web.svg?react";
 import { Button } from "@/components/ui/button";
 import { useTranslation } from "react-i18next";
 import Cookies from "universal-cookie";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import { ChangeEvent, useState } from "react";
+import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -18,12 +28,37 @@ function Index() {
 
   const cookies = new Cookies(null, { path: "/" });
 
+  const [isDialogOpen, setIsDialogOpen] = useState(
+    cookies.get("sysmo-memory-rules") ? false : true,
+  );
+  const [acceptRules, setAcceptRules] = useState(false);
+  const [showWarning, setShowWarning] = useState(false);
+
+  const rules = t("Rules.Rules", { returnObjects: true });
+
   const handleStart = () => {
+    if (!cookies.get("sysmo-memory-rules")) {
+      setIsDialogOpen(true);
+      return;
+    }
     if (cookies.get("sysmo-memory-tutorial") === 1) {
       navigate({ to: "/selectLevel" });
     } else {
       navigate({ to: "/tutorial" });
     }
+  };
+
+  const handleAcceptRules = () => {
+    if (!acceptRules) {
+      setShowWarning(true);
+      return;
+    }
+    cookies.set("sysmo-memory-rules", 1, { path: "/" });
+    setIsDialogOpen(false);
+  };
+  const handleCheckboxChange = (e: ChangeEvent<HTMLInputElement>) => {
+    setAcceptRules(e.target.checked);
+    setShowWarning(false);
   };
 
   return (
@@ -79,6 +114,52 @@ function Index() {
           <WebIcon className="w-[1.875rem]" />
         </a>
       </div>
+      <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+        <DialogContent
+          onInteractOutside={(e) => {
+            e.preventDefault();
+          }}
+        >
+          <DialogHeader>
+            <DialogTitle>{t("Rules.Title")}</DialogTitle>
+            <DialogDescription>{t("Rules.Description")}</DialogDescription>
+          </DialogHeader>
+          <DialogDescription>
+            <ul className="list-disc px-8">
+              {(rules as string[]).map((rule, index) => (
+                <li key={index}>{rule}</li>
+              ))}
+            </ul>
+          </DialogDescription>
+          <DialogFooter className="flex items-center">
+            <div className="mr-auto flex h-8 items-center">
+              <input
+                checked={acceptRules}
+                onChange={handleCheckboxChange}
+                type="checkbox"
+                id="rules-accept"
+                className="mr-2 h-6 w-6 border"
+              />
+              <label
+                htmlFor="rules-accept"
+                className={cn(
+                  "text-[1rem] font-medium uppercase",
+                  showWarning && "text-primary",
+                )}
+              >
+                {t("Btns.Accept")}
+              </label>
+            </div>
+            <Button
+              size="sm"
+              onClick={handleAcceptRules}
+              className="px-[1.75rem] py-6"
+            >
+              {t("Btns.Accept")}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }

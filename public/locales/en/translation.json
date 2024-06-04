@@ -4,7 +4,9 @@
     "Settings": "Settings",
     "Support": "Support",
     "Quit": "Quit",
-    "Home": "Home"
+    "Home": "Home",
+    "Accept": "Accept",
+    "Here": "Tutaj"
   },
   "Settings": {
     "Settings": "Settings",
@@ -71,5 +73,16 @@
   "Menu": {
     "Menu": "Menu",
     "Resume": "Resume"
+  },
+  "Rules": {
+    "Title": "Rules",
+    "Description": "Win free programming hours (code)",
+    "Rules": [
+      "The prize is valid only in the Sysmo.pl software house",
+      "The number of hours depends on the completed difficulty level",
+      "The code is valid for 3 months from receipt",
+      "To use the code, contact us :)"
+    ],
+    "FullRules": "Full regulations can be found"
   }
 }
