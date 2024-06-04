@@ -22,9 +22,57 @@
     "TryAgain": "Spróbuj ponownie"
   },
   "Cards": {
+    "ai": {
+      "Label": "AI",
+      "Description": "Umożliwia komputerom wykonywanie zadań wymagających ludzkiej inteligencji"
+    },
+    "code": {
+      "Label": "Kod",
+      "Description": "Zbiór instrukcji napisanych w języku programowania"
+    },
+    "controller": {
+      "Label": "Kontroler",
+      "Description": "Urządzenie do kontrolowania ruchu w grach komputerowych"
+    },
+    "cpu": {
+      "Label": "CPU",
+      "Description": "Główna jednostka komputera"
+    },
+    "cursor": {
+      "Label": "Kursor",
+      "Description": "Ruchomy wskaźnik na ekranie komputera"
+    },
+    "email": {
+      "Label": "Email",
+      "Description": "Metoda wymiany wiadomości cyfrowych przez Internet"
+    },
+    "laptop": {
+      "Label": "Laptop",
+      "Description": "Przenośny komputer"
+    },
     "mouse": {
       "Label": "Myszka",
       "Description": "Urządzenie służące do interakcji z komputerem"
+    },
+    "pendrive": {
+      "Label": "Pendrive",
+      "Description": "Małe urządzenie pamięci przenośnej"
+    },
+    "router": {
+      "Label": "Router",
+      "Description": "Urządzenie sieciowe, które umożliwia urządzeniom łączność z internetem"
+    },
+    "virus": {
+      "Label": "Wirus",
+      "Description": "Złośliwy program komputerowy"
+    },
+    "webpage": {
+      "Label": "Strona Internetowa",
+      "Description": "Dokument dostępny w sieci, wyświetlany przez przeglądarkę"
+    },
+    "wifi": {
+      "Label": "Wi-Fi",
+      "Description": "Technologia umożliwiająca bezprzewodowy dostęp do Internetu"
     }
   },
   "Tutorial": {

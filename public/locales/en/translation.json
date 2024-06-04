@@ -22,9 +22,57 @@
     "TryAgain": "Try again"
   },
   "Cards": {
+    "ai": {
+      "Label": "AI",
+      "Description": "Enables computers to perform tasks that require human intelligence"
+    },
+    "code": {
+      "Label": "Code",
+      "Description": "A set of instructions written in a programming language"
+    },
+    "controller": {
+      "Label": "Controller",
+      "Description": "A device for controlling movement in computer games"
+    },
+    "cpu": {
+      "Label": "CPU",
+      "Description": "The main unit of the computer"
+    },
+    "cursor": {
+      "Label": "Cursor",
+      "Description": "A movable indicator on a computer screen"
+    },
+    "email": {
+      "Label": "Email",
+      "Description": "A method of exchanging digital messages over the internet"
+    },
+    "laptop": {
+      "Label": "Laptop",
+      "Description": "Portable computer"
+    },
     "mouse": {
       "Label": "Mouse",
       "Description": "A device used to interact with a computer"
+    },
+    "pendrive": {
+      "Label": "Pendrive",
+      "Description": "A small portable storage device"
+    },
+    "router": {
+      "Label": "Router",
+      "Description": "A network device that allows devices to connect to the Internet"
+    },
+    "virus": {
+      "Label": "Virus",
+      "Description": "Malicious computer program"
+    },
+    "webpage": {
+      "Label": "Webpage",
+      "Description": "Document available on the web, displayed by a browser"
+    },
+    "wifi": {
+      "Label": "Wi-Fi",
+      "Description": "A technology that enables wireless internet access"
     }
   },
   "Tutorial": {
