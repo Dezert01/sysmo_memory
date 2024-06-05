@@ -47,7 +47,7 @@ export default function useGame() {
   const winGame = () => {
     setRewardCode(generateCode());
     const audio = new Audio("/audio/gameWon.mp3");
-    audio.volume = cookies.get("sysmo-memory-sfx-volume");
+    audio.volume = cookies.get("sysmo-memory-sfx-volume") || 0.5;
     audio.play();
     navigate({ to: "/winGame" });
 
@@ -55,7 +55,7 @@ export default function useGame() {
   };
   const loseGame = () => {
     const audio = new Audio("/audio/gameLost.mp3");
-    audio.volume = cookies.get("sysmo-memory-sfx-volume");
+    audio.volume = cookies.get("sysmo-memory-sfx-volume") || 0.5;
     audio.play();
     navigate({ to: "/loseGame" });
     stopGame();
@@ -131,14 +131,14 @@ export default function useGame() {
     if (firstToMatch !== undefined && secondToMatch !== undefined) {
       if (board[firstToMatch].card === board[secondToMatch].card) {
         const audio = new Audio("/audio/correctMatch.mp3");
-        audio.volume = cookies.get("sysmo-memory-sfx-volume");
+        audio.volume = cookies.get("sysmo-memory-sfx-volume") || 0.5;
         audio.play();
         setMatchedTiles([...matchedTiles, firstToMatch, secondToMatch]);
         setFirstToMatch(undefined);
         setSecondToMatch(undefined);
       } else {
         const audio = new Audio("/audio/wrongMatch.mp3");
-        audio.volume = cookies.get("sysmo-memory-sfx-volume");
+        audio.volume = cookies.get("sysmo-memory-sfx-volume") || 0.5;
         audio.play();
         setTimeout(() => {
           setFirstToMatch(undefined);

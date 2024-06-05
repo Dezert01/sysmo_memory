@@ -54,7 +54,7 @@ function Game() {
       audioRef.current = null;
     }
     const audio = new Audio("/audio/theme.mp3");
-    audio.volume = cookies.get("sysmo-memory-music-volume");
+    audio.volume = cookies.get("sysmo-memory-music-volume") || 0.5;
     audio.loop = true;
     audio.play();
     audioRef.current = audio;
