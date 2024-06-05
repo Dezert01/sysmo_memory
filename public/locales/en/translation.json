@@ -108,8 +108,7 @@
     "EmailQuestion": "Do you want to receive the code by email?",
     "No": "No",
     "Yes": "Yes",
-    "GameRunning": "Game is still running.",
-    "GoBackToGame": "Go back to game"
+    "ThereIsNothing": "There is nothing to look for :)"
   },
   "LoseGame": {
     "GameOver": "Game Over",

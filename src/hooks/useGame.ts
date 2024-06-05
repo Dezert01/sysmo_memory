@@ -2,8 +2,10 @@ import { GameConfig } from "@/config/game.config";
 import useGameStore from "@/store/gameStore";
 import { useNavigate } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
+import Cookies from "universal-cookie";
 
 export default function useGame() {
+  const cookies = new Cookies(null, { path: "/" });
   const {
     level,
     isGameRunning,
@@ -14,6 +16,7 @@ export default function useGame() {
     setBoard,
     setTempTimestamp,
     setTimeleftStore,
+    setRewardCode,
   } = useGameStore();
   const navigate = useNavigate();
   const boardSize = GameConfig.levels[level].pairs * 2;
@@ -42,10 +45,18 @@ export default function useGame() {
     setBoard([]);
   };
   const winGame = () => {
+    setRewardCode(generateCode());
+    const audio = new Audio("/audio/gameWon.mp3");
+    audio.volume = cookies.get("sysmo-memory-sfx-volume");
+    audio.play();
     navigate({ to: "/winGame" });
+
     stopGame();
   };
   const loseGame = () => {
+    const audio = new Audio("/audio/gameLost.mp3");
+    audio.volume = cookies.get("sysmo-memory-sfx-volume");
+    audio.play();
     navigate({ to: "/loseGame" });
     stopGame();
   };
@@ -104,13 +115,31 @@ export default function useGame() {
     }
   };
 
+  function generateCode(): string {
+    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    let result = "";
+    const charactersLength = characters.length;
+
+    for (let i = 0; i < 7; i++) {
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+
+    return result;
+  }
+
   const checkMatch = async () => {
     if (firstToMatch !== undefined && secondToMatch !== undefined) {
       if (board[firstToMatch].card === board[secondToMatch].card) {
+        const audio = new Audio("/audio/correctMatch.mp3");
+        audio.volume = cookies.get("sysmo-memory-sfx-volume");
+        audio.play();
         setMatchedTiles([...matchedTiles, firstToMatch, secondToMatch]);
         setFirstToMatch(undefined);
         setSecondToMatch(undefined);
       } else {
+        const audio = new Audio("/audio/wrongMatch.mp3");
+        audio.volume = cookies.get("sysmo-memory-sfx-volume");
+        audio.play();
         setTimeout(() => {
           setFirstToMatch(undefined);
           setSecondToMatch(undefined);

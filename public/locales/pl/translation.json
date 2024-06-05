@@ -19,7 +19,8 @@
     "EnterEmail": "Wprowadź swój adres e-mail",
     "Message": "Wiadomość",
     "Send": "Wyślij",
-    "TryAgain": "Spróbuj ponownie"
+    "TryAgain": "Spróbuj ponownie",
+    "InvalidEmail": "Niepoprawny e-mail"
   },
   "Cards": {
     "ai": {
@@ -108,8 +109,7 @@
     "EmailQuestion": "Czy chciałbyś otrzymać kod na e-mail?",
     "No": "Nie",
     "Yes": "Tak",
-    "GameRunning": "Gra w trakcie.",
-    "GoBackToGame": "Wróć do gry"
+    "ThereIsNothing": "Nie ma tutaj nic ciekawego :)"
   },
   "LoseGame": {
     "GameOver": "Game Over",

@@ -7,6 +7,7 @@ type States = {
   board: { card: string; isImage: boolean; content: string }[];
   tempTimestamp: number;
   timeleftStore: number;
+  rewardCode: string;
 };
 type Actions = {
   setLevel: (level: "easy" | "medium" | "hard") => void;
@@ -17,6 +18,7 @@ type Actions = {
   ) => void;
   setTempTimestamp: (tempTimestamp: number) => void;
   setTimeleftStore: (timeleftStore: number) => void;
+  setRewardCode: (rewardCode: string) => void;
 };
 
 const useGameStore = create<States & Actions>((set) => ({
@@ -26,6 +28,7 @@ const useGameStore = create<States & Actions>((set) => ({
   board: [],
   tempTimestamp: 0,
   timeleftStore: 0,
+  rewardCode: "",
 
   setLevel: (level) => set({ level }),
   setIsGameRunning: (isGameRunning) => set({ isGameRunning }),
@@ -33,6 +36,7 @@ const useGameStore = create<States & Actions>((set) => ({
   setBoard: (board) => set({ board }),
   setTempTimestamp: (tempTimestamp) => set({ tempTimestamp }),
   setTimeleftStore: (timeleftStore) => set({ timeleftStore }),
+  setRewardCode: (rewardCode) => set({ rewardCode }),
 }));
 
 export default useGameStore;

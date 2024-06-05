@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import { GameConfig } from "@/config/game.config";
 import { useEffect, useRef, useState } from "react";
 import useGame from "@/hooks/useGame";
+import Cookies from "universal-cookie";
 
 export const Route = createFileRoute("/game")({
   component: Game,
@@ -25,6 +26,9 @@ function Game() {
 
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
   const timeleftRef = useRef<number>(0);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const cookies = new Cookies(null, { path: "/" });
 
   const {
     firstToMatch,
@@ -45,6 +49,14 @@ function Game() {
   };
   useEffect(() => {
     if (!isGameRunning) return;
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+    const audio = new Audio("/audio/theme.mp3");
+    audio.volume = cookies.get("sysmo-memory-music-volume");
+    audio.play();
+    audioRef.current = audio;
     startGame(level);
     const _timeleft =
       tempTimestamp == 0
@@ -77,6 +89,10 @@ function Game() {
         clearInterval(intervalRef.current);
       }
       updateTimestamp(timeleftRef.current);
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
       console.log("unmount");
     };
   }, []);

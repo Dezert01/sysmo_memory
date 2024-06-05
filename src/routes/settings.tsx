@@ -1,6 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { useTranslation } from "react-i18next";
+import { Slider } from "@/components/ui/slider";
+import Cookies from "universal-cookie";
+import { useEffect, useRef } from "react";
 
 export const Route = createFileRoute("/settings")({
   component: Settings,
@@ -8,10 +11,48 @@ export const Route = createFileRoute("/settings")({
 
 function Settings() {
   const { t, i18n } = useTranslation();
-
+  const cookies = new Cookies(null, { path: "/" });
   const handleLanguageChange = (lng: "pl" | "en") => {
     i18n.changeLanguage(lng);
   };
+
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const playAudio = (src: string, volume: number) => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      audioRef.current = null;
+    }
+
+    const audio = new Audio(src);
+    audio.volume = volume;
+    audio.play();
+    audioRef.current = audio;
+  };
+
+  const handleChangeMusicVolume = (value: number[]) => {
+    const volume = value[0] / 100;
+
+    cookies.set("sysmo-memory-music-volume", volume, { path: "/" });
+
+    playAudio("/audio/theme.mp3", volume);
+  };
+  const handleChangeSfxVolume = (value: number[]) => {
+    const volume = value[0] / 100;
+
+    cookies.set("sysmo-memory-sfx-volume", volume, { path: "/" });
+
+    playAudio("/audio/correctMatch.mp3", volume);
+  };
+
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
 
   return (
     <div className="container flex flex-col items-center justify-center">
@@ -38,9 +79,25 @@ function Settings() {
         </div>
         <div className="flex items-center justify-between text-[1.25rem] font-bold uppercase text-black">
           <div>{t("Settings.Music")}</div>
+          <Slider
+            className="w-1/2"
+            defaultValue={[
+              cookies.get("sysmo-memory-music-volume") * 100 || 50,
+            ]}
+            max={100}
+            step={1}
+            onValueCommit={(e) => handleChangeMusicVolume(e)}
+          />
         </div>
         <div className="flex items-center justify-between text-[1.25rem] font-bold uppercase text-black">
           <div>{t("Settings.Sfx")}</div>
+          <Slider
+            className="w-1/2"
+            defaultValue={[cookies.get("sysmo-memory-sfx-volume") * 100 || 50]}
+            max={100}
+            step={1}
+            onValueCommit={(e) => handleChangeSfxVolume(e)}
+          />
         </div>
       </div>
       <Link to="/support">
