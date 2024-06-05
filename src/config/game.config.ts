@@ -25,7 +25,7 @@ export const GameConfig = {
     },
     hard: {
       pairs: 8,
-      time: 5,
+      time: 50,
     },
   },
 };

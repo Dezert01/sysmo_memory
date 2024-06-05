@@ -55,6 +55,7 @@ function Game() {
     }
     const audio = new Audio("/audio/theme.mp3");
     audio.volume = cookies.get("sysmo-memory-music-volume");
+    audio.loop = true;
     audio.play();
     audioRef.current = audio;
     startGame(level);
